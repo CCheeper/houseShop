@@ -1296,16 +1296,6 @@
 				"iconPath": "static/api.png",
 				"selectedIconPath": "static/apiHL.png",
 				"text": "接口"
-			}, {
-				"pagePath": "pages/tabBar/extUI/extUI",
-				"iconPath": "static/extui.png",
-				"selectedIconPath": "static/extuiHL.png",
-				"text": "扩展组件"
-			}, {
-				"pagePath": "pages/tabBar/template/template",
-				"iconPath": "static/template.png",
-				"selectedIconPath": "static/templateHL.png",
-				"text": "模板"
 			}
 		]
 	}
