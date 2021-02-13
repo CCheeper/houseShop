@@ -1,9 +1,9 @@
 <template>
 	<view>
-		<page-head :title="title"></page-head>
 		<view class="uni-padding-wrap uni-common-mt">
-			<view style="font-size: 12px; color: #666;">注：PC 不支持下拉刷新</view>
-			<view class="text" v-for="(num,index) in data" :key="index">list - {{num}}</view>
+			<view class="text" v-for="(num,index) in data" :key="index" @click="_request()">
+				list+{{index}}
+			</view>
 			<view class="uni-loadmore" v-if="showLoadMore">{{loadMoreText}}</view>
 		</view>
 	</view>
@@ -44,8 +44,38 @@
 			this.initData();
 		},
 		methods: {
+			_request() {
+				uni.request({
+					url: 'localhost:8080',
+					dataType: 'text',
+					data: {
+						noncestr: Date.now()
+					},
+					success: (res) => {
+						console.log('request success', res)
+						uni.showToast({
+							title: '请求成功',
+							icon: 'success',
+							mask: true,
+							duration: duration
+						});
+						this.res = '请求结果 : ' + JSON.stringify(res);
+					},
+					fail: (err) => {
+						console.log('request fail', err);
+						uni.showModal({
+							content: err.errMsg,
+							showCancel: false
+						});
+					},
+					complete: () => {
+						this.loading = false;
+					}
+				});
+			},
 			initData(){
 				setTimeout(() => {
+					
 					this.max = 0;
 					this.data = [];
 					let data = [];

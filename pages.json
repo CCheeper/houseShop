@@ -14,9 +14,9 @@
 	"pages": [
 		// pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/tabBar/component/component",
+			"path": "pages/API/pull-down-refresh/pull-down-refresh",
 			"style": {
-				"navigationBarTitleText": "内置组件",
+				"navigationBarTitleText": "房源",
 				"app-plus": {
 					"bounce": "vertical",
 					"titleNView": {
@@ -33,7 +33,7 @@
 		{
 			"path": "pages/tabBar/API/API",
 			"style": {
-				"navigationBarTitleText": "接口",
+				"navigationBarTitleText": "我的",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [{
@@ -1286,16 +1286,16 @@
 		"borderStyle": "black",
 		"backgroundColor": "#F8F8F8",
 		"list": [{
-				"pagePath": "pages/tabBar/component/component",
+				"pagePath": "pages/API/pull-down-refresh/pull-down-refresh",
 				"iconPath": "static/component.png",
 				"selectedIconPath": "static/componentHL.png",
-				"text": "内置组件"
+				"text": "房源"
 			},
 			{
 				"pagePath": "pages/tabBar/API/API",
 				"iconPath": "static/api.png",
 				"selectedIconPath": "static/apiHL.png",
-				"text": "接口"
+				"text": "我的"
 			}
 		]
 	}
