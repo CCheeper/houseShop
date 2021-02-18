@@ -1,8 +1,19 @@
 <template>
 	<view>
 		<view class="uni-padding-wrap uni-common-mt">
-			<view class="text" v-for="(num,index) in data" :key="index" @click="_request()">
-				list+{{index}}
+			<view class="" v-for="(num,index) in data" :key="index" @click="_request()" style="height: 150px;">
+				<view @click="tapBlock(index)">
+					<image src="../../../static/60x60.png" style="margin: 14px 5px;float: left;height: 120px;width: 120px;"></image>
+					<div style='display: inline-block;align=left;margin: 14px;'>
+						<div style="font-size: 20px;height: 30px;">东方曼哈顿 3室2厅 西南</div>
+						<div style="font-size: 17px;height: 25px;">3宝2厅|83.7m|西南东方曼</div>
+						<div style="font-size: 17px;height: 25px;">利州区·万源</div>
+						<div style="display: flex;">
+							<div style="font-size: 25px;height: 25px;color: #EE0A24;">25万</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<div style="font-size: 15px;font-weight: 100;position:fixed; bottom:0px;right: 30px;">10000/平</div>
+						</div>
+					</div>
+				</view>
 			</view>
 			<view class="uni-loadmore" v-if="showLoadMore">{{loadMoreText}}</view>
 		</view>
@@ -18,15 +29,16 @@
 				showLoadMore: false,
 				max: 0
 			}
-		},
+		}
+		,
 		onLoad() {
 			this.initData();
 		},
 		onUnload() {
 			this.max = 0,
-			this.data = [],
-			this.loadMoreText = "加载更多",
-			this.showLoadMore = false;
+				this.data = [],
+				this.loadMoreText = "加载更多",
+				this.showLoadMore = false;
 		},
 		onReachBottom() {
 			console.log("onReachBottom");
@@ -45,37 +57,37 @@
 		},
 		methods: {
 			_request() {
-				uni.request({
-					url: 'localhost:8080',
-					dataType: 'text',
-					data: {
-						noncestr: Date.now()
-					},
-					success: (res) => {
-						console.log('request success', res)
-						uni.showToast({
-							title: '请求成功',
-							icon: 'success',
-							mask: true,
-							duration: duration
-						});
-						this.res = '请求结果 : ' + JSON.stringify(res);
-					},
-					fail: (err) => {
-						console.log('request fail', err);
-						uni.showModal({
-							content: err.errMsg,
-							showCancel: false
-						});
-					},
-					complete: () => {
-						this.loading = false;
-					}
-				});
+				// uni.request({
+				// 	url: 'localhost:8080',
+				// 	dataType: 'text',
+				// 	data: {
+				// 		noncestr: Date.now()
+				// 	},
+				// 	success: (res) => {
+				// 		console.log('request success', res)
+				// 		uni.showToast({
+				// 			title: '请求成功',
+				// 			icon: 'success',
+				// 			mask: true,
+				// 			duration: duration
+				// 		});
+				// 		this.res = '请求结果 : ' + JSON.stringify(res);
+				// 	},
+				// 	fail: (err) => {
+				// 		console.log('request fail', err);
+				// 		uni.showModal({
+				// 			content: err.errMsg,
+				// 			showCancel: false
+				// 		});
+				// 	},
+				// 	complete: () => {
+				// 		this.loading = false;
+				// 	}
+				// });
 			},
-			initData(){
+			initData() {
 				setTimeout(() => {
-					
+
 					this.max = 0;
 					this.data = [];
 					let data = [];
@@ -94,6 +106,11 @@
 					data.push(i)
 				}
 				this.data = this.data.concat(data);
+			},
+			tapBlock(index){
+				uni.navigateTo({
+				    url: '/pages/houseDetail/detail?id='+index
+				});
 			}
 		}
 	}
@@ -102,7 +119,7 @@
 <style>
 	.text {
 		margin: 16rpx 0;
-		width:100%;
+		width: 100%;
 		background-color: #fff;
 		height: 120rpx;
 		line-height: 120rpx;

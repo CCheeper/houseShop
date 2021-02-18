@@ -96,6 +96,24 @@
 				"navigationBarTitleText": "swiper"
 			}
 		},
+		{
+			"path": "pages/houseDetail/detail",
+			"style": {
+				"navigationBarTitleText": "房屋详情"
+			}
+		},
+		{
+			"path": "pages/houseDetail/editPassword",
+			"style": {
+				"navigationBarTitleText": "密码修改"
+			}
+		},
+		{
+			"path": "pages/houseDetail/userOrder",
+			"style": {
+				"navigationBarTitleText": "已定房屋"
+			}
+		},
 		// #ifndef MP-TOUTIAO
 		{
 			"path": "pages/component/cover-view/cover-view",
